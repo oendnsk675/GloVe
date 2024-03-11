@@ -1,21 +1,6 @@
 #!/bin/bash
-set -e
 
-# Makes programs, downloads sample data, trains a GloVe model, and then evaluates it.
-# One optional argument can specify the language used for eval script: matlab, octave or [default] python
-
-make
-if [ ! -e text8 ]; then
-  if hash wget 2>/dev/null; then
-    wget http://mattmahoney.net/dc/text8.zip
-  else
-    curl -O http://mattmahoney.net/dc/text8.zip
-  fi
-  unzip text8.zip
-  rm text8.zip
-fi
-
-CORPUS=text8
+CORPUS=/content/drive/MyDrive/Penelitian/Skripsi/SA/word_vec/wiki.id.text
 VOCAB_FILE=vocab.txt
 COOCCURRENCE_FILE=cooccurrence.bin
 COOCCURRENCE_SHUF_FILE=cooccurrence.shuf.bin
@@ -26,7 +11,7 @@ MEMORY=4.0
 VOCAB_MIN_COUNT=5
 VECTOR_SIZE=50
 MAX_ITER=15
-WINDOW_SIZE=15
+WINDOW_SIZE=5
 BINARY=2
 NUM_THREADS=8
 X_MAX=10
